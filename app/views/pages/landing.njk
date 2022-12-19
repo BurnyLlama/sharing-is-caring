@@ -1,0 +1,18 @@
+{% extends "templates/base.njk" %}
+
+{% block body %}
+    <header>
+        <h1>Sharing is Caring!</h1>
+    </header>
+    <main>
+        <form action="#" class="flex">
+            <label for="url">Shorten a URL:</label>
+            <input type="text" name="url" id="url" placeholder="https://example.com">
+            <input type="submit" value="Shorten it!">
+        </form>
+        <div class="flex">
+            <a href="#">Upload a file!</a>
+            <a href="#">Upload a paste!</a>
+        </div>
+    </main>
+{% endblock %}
