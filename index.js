@@ -3,6 +3,8 @@ import getLogger from "./lib/logger.js"
 import njk from "nunjucks"
 import setup from "./setup.js"
 import { setupDB } from "./lib/database.js"
+import routes from "./routes/routes.js"
+import bodyParser from "body-parser"
 
 const log = getLogger("MAIN     |", "blue")
 
@@ -25,6 +27,8 @@ njk.configure(
     }
 )
 
-server.get("/", (req, res) => res.render("pages/landing.njk"))
+server.use(bodyParser.urlencoded({ extended: true }))
+
+server.use("/", routes)
 
 server.listen(12345, () => log.write("Listening on 'http://localhost:12345/'!"))

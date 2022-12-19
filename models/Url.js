@@ -28,7 +28,7 @@ const Url = {
      * @returns {void}
      */
     save: url => db
-        .prepare("INSERT INTO urls (uuid, location, customUrl) VALUES ($uuid, $location, $customUrl)")
+        .prepare("INSERT INTO urls (id, location, customUrl) VALUES ($id, $location, $customUrl)")
         .run(url) ?? null,
 
     /**
@@ -37,7 +37,7 @@ const Url = {
      * @returns {Url?}
      */
     findById: id => db
-        .prepare("SELECT * FROM urls WHERE uuid = ?")
+        .prepare("SELECT * FROM urls WHERE id = ?")
         .get(id) ?? null,
 
     /**
@@ -46,7 +46,7 @@ const Url = {
      * @returns {Url?}
      */
     findByCustomUrl: customUrl => db
-        .prepare("SELECT * FROM urls WHERE uuid = ?")
+        .prepare("SELECT * FROM urls WHERE customUrl = ?")
         .get(customUrl) ?? null,
 }
 
