@@ -1,0 +1,30 @@
+{
+  "name": "sharing-is-caring",
+  "version": "0.1.0",
+  "description": "URL and file sharing.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BurnyLlama/sharing-is-caring.git"
+  },
+  "keywords": [
+    "URL;file;sharing"
+  ],
+  "author": "BurnyLlama & BobZaa",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/BurnyLlama/sharing-is-caring/issues"
+  },
+  "homepage": "https://github.com/BurnyLlama/sharing-is-caring#readme",
+  "dependencies": {
+    "better-sqlite3": "^8.0.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.30.0"
+  }
+}
