@@ -10,6 +10,7 @@
     --raised: #BBCCBB;
     --primary: #458565;
     --accent: #667766;
+    --text: #112211;
   }
 
 :root, html, body {
@@ -17,19 +18,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: var(--text);
+    background-color: var(--surface);
+}
+
+header {
+    color: var(--surface);
+    background-color: var(--primary);
+    width: 80vw;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0 0 3rem 3rem;
+}
+
+header > h1 {
+    font-weight: 200;
 }
 
 main {
     margin: auto 0;
-}
-
-h1  {
-    font-weight: 300;
-    align-self: start;
-}
-
-a {
-    font-weight: 100;
-    color: green;
-    
 }
