@@ -30,5 +30,6 @@ njk.configure(
 server.use(bodyParser.urlencoded({ extended: true }))
 
 server.use("/", routes)
+server.use("/static", express.static("static"))
 
 server.listen(12345, () => log.write("Listening on 'http://localhost:12345/'!"))
