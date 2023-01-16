@@ -4,3 +4,32 @@
     box-sizing: border-box;
     font-family: 'Inter', 'Helvetica','Arial', sans-serif;
 }
+
+:root {
+    --surface: #DDEEDD;
+    --raised: #BBCCBB;
+    --primary: #458565;
+    --accent: #667766;
+  }
+
+:root, html, body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    margin: auto 0;
+}
+
+h1  {
+    font-weight: 300;
+    align-self: start;
+}
+
+a {
+    font-weight: 100;
+    color: green;
+    
+}
