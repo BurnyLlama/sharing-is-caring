@@ -2,6 +2,7 @@ import { randomUUID } from "crypto"
 import { db } from "../lib/database"
 
 /**
+ * A paste is a text stored in the database.
  * @typedef {object} Paste
  * @property {string} id
  * @property {string} text The text in the paste.
