@@ -24,7 +24,7 @@ const Paste = {
      */
     save: paste => db
         .prepare("INSERT INTO paste (id, text) VALUES ($id, $text)")
-        .run(paste) ?? null,
+        .run(paste),
 
     /**
      * Find a paste via id.
