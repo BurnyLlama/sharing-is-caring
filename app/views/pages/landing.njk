@@ -1,19 +1,14 @@
 {% extends "templates/base.njk" %}
 
-{% block body %}
-    <header>
-        <h1>Sharing is Caring!</h1>
-    </header>
-    <main>
-        <form action="/url/create" method="post" class="flex">
-            <label for="url">Shorten a URL:</label>
-            <input type="text" name="url" id="url" placeholder="https://example.com">
-            <input type="submit" value="Shorten it!">
-        </form>
-        <div class="buttons">
-            <a href="#">Custom URL shortening!</a>
-            <a href="#">Upload a file!</a>
-            <a href="/paste">Upload a paste!</a>
-        </div>
-    </main>
+{% block main %}
+    <form action="/url/create" method="post" class="flex">
+        <label for="url">Shorten a URL:</label>
+        <input type="text" name="url" id="url" placeholder="https://example.com">
+        <input type="submit" value="Shorten it!">
+    </form>
+    <div class="buttons">
+        <a href="#">Custom URL shortening!</a>
+        <a href="/file">Upload a file!</a>
+        <a href="/paste">Upload a paste!</a>
+    </div>
 {% endblock %}

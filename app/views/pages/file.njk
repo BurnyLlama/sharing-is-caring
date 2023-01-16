@@ -1,0 +1,14 @@
+{% extends "templates/base.njk" %}
+
+{% block main %}
+    <form action="/file/create" method="post" enctype="multipart/form-data">
+        <label for="file">Select file:</label>
+        <input type="file" name="file" id="file">
+        <input type="submit" value="Send!">
+    </form>
+
+    <div class="flex">
+        <a href="#">Upload a paste!</a>
+        <a href="/">Go back!</a>
+    </div>
+{% endblock %}

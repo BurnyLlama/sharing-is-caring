@@ -10,8 +10,18 @@
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-        <p>Hello World!</p>
-    {% endblock %}
+    <header>
+        <h1>Sharing is Caring!</h1>
+    </header>
+    <main>
+        {% block main %}
+            <p>Hello World!</p>
+        {% endblock %}
+    </main>
+    <footer>
+        <p>
+            (c) Sharing is Caring! 2023
+        </p>
+    </footer>
 </body>
 </html>
