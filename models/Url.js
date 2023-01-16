@@ -2,6 +2,7 @@ import { randomUUID } from "crypto"
 import { db } from "../lib/database.js"
 
 /**
+ * A Url represents a URL shortening.
  * @typedef {object} Url
  * @property {string} id
  * @property {string} location The location where the URL points to.
@@ -16,6 +17,7 @@ const Url = {
      * @returns {Url}
      */
     create: (location, customUrl=null) => ({
+        // TODO: IDs really shouldn't be UUIDs; they aren't short. Consider hex-numbers.
         id: randomUUID(),
         location: location ?? "https://example.com",
         // TODO: Implement customUrl.
