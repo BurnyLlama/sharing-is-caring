@@ -46,11 +46,12 @@ main {
     margin: auto 0;
 }
 
-a {
+.buttons > a {
+    display: block;
     text-decoration: none;
     color: var(--surface);
     background-color: var(--primary);
-    border: 3px solid var(--primary);
+    border: 0.5rem solid var(--primary);
     border-radius: 10rem;
     padding: 0.5rem 1rem;
 }
