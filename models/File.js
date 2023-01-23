@@ -5,6 +5,7 @@ import { randomUUID } from "crypto"
  * @typedef {object} File
  * @property {string} id
  * @property {string} name The file name.
+ * @property {string} mimetype The file type.
  * @property {Date}   c_time Creation time.
  */
 
@@ -12,11 +13,13 @@ const File = {
     /**
      * Creates a {@link File} instance. (Does not save to database.)
      * @param {string} name File name.
+     * @param {string} mimetype File type.
      * @returns {File}
      */
-    create: name => ({
+    create: (name, mimetype) => ({
         id: randomUUID(),
         name,
+        mimetype,
         c_time: new Date(Date.now())
     }),
 
