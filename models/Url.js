@@ -13,15 +13,14 @@ const Url = {
     /**
      * Creates a {@link Url} instance. (Does not save to database.)
      * @param {string} location The location where the URL points to.
-     * @param {string} [customUrl] Optional custom URL.
+     * @param {string} customUrl Optional custom URL. (Can be null.)
      * @returns {Url}
      */
-    create: (location, customUrl=null) => ({
+    create: (location, customUrl) => ({
         // TODO: IDs really shouldn't be UUIDs; they aren't short. Consider hex-numbers.
         id: randomUUID(),
         location: location ?? "https://example.com",
-        // TODO: Implement customUrl.
-        customUrl: null
+        customUrl: customUrl.replace(/\W+/g, "-")
     }),
 
     /**

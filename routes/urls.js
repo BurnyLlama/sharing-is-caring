@@ -42,9 +42,16 @@ urls.get(
 urls.post(
     "/create",
     (req, res) => {
-        const url = Url.create(req.body.url, req.body.customUrl)
+        const customUrl = req.body.customUrl
+        if (customUrl && Url.findByCustomUrl(customUrl))
+            return res.status(402).send("Already taken!")
+
+        const url = Url.create(req.body.url, customUrl ?? null)
         Url.save(url)
-        res.send(`<a href="/url/s/${url.id}">Your link here.</a>`)
+        if (url.customUrl)
+            return res.send(`<a href="/url/c/${url.customUrl}">Your link here. (Right click.)</a>`)
+
+        res.send(`<a href="/url/s/${url.id}">Your link here. (Right click.)</a>`)
     }
 )
 
