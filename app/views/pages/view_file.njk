@@ -1,0 +1,11 @@
+{% extends "templates/base.njk" %}
+
+{% block main %}
+    <h1>{{ file.name }}</h1>
+
+    <a href="/file/download/{{ file.id }}" download="{{ file.name }}">Download file!</a>
+
+    <div class="flex">
+        <a href="/paste">Upload a file!</a>
+    </div>
+{% endblock %}

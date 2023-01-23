@@ -2,18 +2,39 @@ import { Router } from "express"
 import File from "../models/File.js"
 import multer from "multer"
 import { writeFile } from "fs/promises"
+import path from "path"
 
 const files = Router()
 
 files.get(
-    "/:id",
+    "/view/:id",
     (req, res) => {
         const file = File.findById(req.params.id)
 
         if (!file)
             return res.status(404).send("Not found.")
 
-        res.render("pages/file.njk", { file })
+        res.render("pages/view_file.njk", { file })
+    }
+)
+
+files.get(
+    "/download/:id",
+    (req, res) => {
+        const file = File.findById(req.params.id)
+
+        if (!file) {
+            res.status(404).send("Not found.")
+        }
+
+        const filePath = `./data/storage/${file.name.replace(/[^\w-.]+/g, "_")}_${file.id}.${file.mimetype.replace(/^.+\//g, "")}`
+        res.sendFile(
+            filePath,
+            {
+                root: ".",
+                dotfiles: "deny"
+            }
+        )
     }
 )
 
@@ -23,7 +44,7 @@ files.post(
     (req, res) => {
         if (!req.file)
             return res.status()
-        // TODO: Fix this later.
+
         const { mimetype, originalname, buffer} = req.file
 
         const file = File.create(originalname, mimetype)
@@ -32,10 +53,11 @@ files.post(
         writeFile(filePath, buffer)
             .then(() => {
                 File.save(file)
-                res.render("pages/file.njk", { file })
+                res.redirect(`/file/view/${file.id}`)
             })
-            .catch(() => {
-                res.status(500).render("pages/file.njk")
+            .catch(err => {
+                console.error(err)
+                res.status(500).send("ERROR!")
             })
     }
 )
