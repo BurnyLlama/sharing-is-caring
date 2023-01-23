@@ -4,14 +4,14 @@ import Paste from "../models/Paste.js"
 const pastes = Router()
 
 pastes.get(
-    "/:id",
+    "/view/:id",
     (req, res) => {
-        const file = Paste.findById(req.params.id)
+        const paste = Paste.findById(req.params.id)
 
-        if (!file)
+        if (!paste)
             return res.status(404).send("Not found.")
 
-        res.render("pages/file.njk", { file })
+        res.render("pages/view_paste.njk", { paste })
     }
 )
 
@@ -20,7 +20,7 @@ pastes.post(
     (req, res) => {
         const paste = Paste.create(req.body.paste)
         Paste.save(paste)
-        res.render("pages/paste.njk", { paste })
+        res.redirect(`/paste/view/${paste.id}`)
     }
 )
 

@@ -6,7 +6,7 @@ import { randomUUID } from "crypto"
  * @property {string} id
  * @property {string} name The file name.
  * @property {string} mimetype The file type.
- * @property {Date}   c_time Creation time.
+ * @property {string} c_time Creation time. (Saved as ISO-string.)
  */
 
 const File = {
@@ -20,7 +20,7 @@ const File = {
         id: randomUUID(),
         name,
         mimetype,
-        c_time: new Date(Date.now())
+        c_time: new Date(Date.now()).toISOString() // Must be a string to save in sqlite.
     }),
 
     /**
@@ -29,7 +29,7 @@ const File = {
      * @returns {void}
      */
     save: file => db
-        .prepare("INSERT INTO urls (id, name, c_time) VALUES ($id, $name, $c_time)")
+        .prepare("INSERT INTO files (id, name, mimetype, c_time) VALUES ($id, $name, $mimetype, $c_time)")
         .run(file) ?? null,
 
     /**

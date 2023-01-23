@@ -1,0 +1,17 @@
+{% extends "templates/base.njk" %}
+
+{% block main %}
+    <div>
+        <p>Write your paste here:</p>
+    </div>
+
+    <form method="post" action="/paste/create">
+        <textarea name="paste" id="paste" cols="30" rows="10"></textarea>
+        <input type="submit" value="Send!">
+    </form>
+
+    <div class="flex">
+        <a href="#">Upload a paste!</a>
+        <a href="/">Go back!</a>
+    </div>
+{% endblock %}
