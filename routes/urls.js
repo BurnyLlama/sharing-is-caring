@@ -42,7 +42,7 @@ urls.get(
 urls.post(
     "/create",
     (req, res) => {
-        const customUrl = req.body.customUrl
+        const customUrl = req.body.customUrl.replace(/\W+/g, "-")
         if (customUrl && Url.findByCustomUrl(customUrl))
             return res.status(402).send("Already taken!")
 
