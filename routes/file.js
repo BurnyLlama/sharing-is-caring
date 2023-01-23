@@ -24,7 +24,7 @@ files.post(
         if (!req.file)
             return res.status()
         // TODO: Fix this later.
-        const { mimetype, originalname, buffer} = req.file;
+        const { mimetype, originalname, buffer} = req.file
 
         const file = File.create(originalname, mimetype)
 
