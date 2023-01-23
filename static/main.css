@@ -9,9 +9,9 @@
     --surface: #DDEEDD;
     --raised: #BBCCBB;
     --primary: #458565;
-    --accent: #667766;
+    --accent: #223322;
     --text: #112211;
-  }
+}
 
 :root, html, body {
     min-height: 100vh;
@@ -38,7 +38,7 @@ header > h1 {
 footer {
     color: var(--primary);
     padding: 0.5rem;
-    width: 100%;    
+    width: 100%;
     text-align: center;
 }
 
@@ -46,13 +46,70 @@ main {
     margin: auto 0;
 }
 
-.buttons > a {
-    display: block;
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.flex > * {
+    margin: .25rem .5rem;
+}
+
+.btn,
+input,
+textarea {
+    border-radius: .5rem;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    border: var(--raised) solid .1rem;
+    background-color: var(--raised);
+    color: var(--text);
+    transition: border-radius .3s, border-color .3s;
+}
+
+.btn:hover,
+input:hover,
+textarea:hover {
+    border-color: var(--primary);
+    border-radius: 1rem;
+}
+
+.btn:active,
+input:active,
+textarea:active,
+.btn:focus,
+input:focus,
+textarea:focus {
+    border-color: var(--primary);
+    outline: var(--primary) solid .1rem;
+}
+
+input,
+textarea {
+    color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--accent);
+}
+
+label {
+    color: var(--primary);
+}
+
+.btn,
+input[type="submit"] {
     text-decoration: none;
     color: var(--surface);
     background-color: var(--primary);
-    border: 0.5rem solid var(--primary);
-    border-radius: 10rem;
-    padding: 0.5rem 1rem;
+    border-color: var(--primary);
 }
 
+.btn:hover,
+input[type="submit"]:hover {
+    cursor: pointer;
+}
