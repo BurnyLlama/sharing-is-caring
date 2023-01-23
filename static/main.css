@@ -113,3 +113,9 @@ input[type="submit"] {
 input[type="submit"]:hover {
     cursor: pointer;
 }
+
+.btn.secondary,
+input[type="submit"].secondary {
+    color: var(--primary);
+    background-color: transparent;
+}
