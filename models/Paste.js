@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto"
-import { db } from "../lib/database"
+import { db } from "../lib/database.js"
 
 /**
  * A paste is a text stored in the database.
@@ -24,7 +24,7 @@ const Paste = {
      * @param {Paste} paste
      */
     save: paste => db
-        .prepare("INSERT INTO paste (id, text) VALUES ($id, $text)")
+        .prepare("INSERT INTO pastes (id, text) VALUES ($id, $text)")
         .run(paste),
 
     /**
@@ -33,7 +33,7 @@ const Paste = {
      * @returns {Paste?}
      */
     findById: id => db
-        .prepare("SELECT * FROM paste WHERE id = ?")
+        .prepare("SELECT * FROM pastes WHERE id = ?")
         .get(id) ?? null,
 }
 

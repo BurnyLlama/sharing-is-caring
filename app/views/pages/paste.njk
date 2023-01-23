@@ -5,9 +5,10 @@
         <p>Write your paste here:</p>
     </div>
 
-    <div>
+    <form method="post" action="/paste/create">
         <textarea name="pasteContent" id="pasteContent" cols="30" rows="10"></textarea>
-    </div>
+        <input type="submit" value="Send!">
+    </form>
 
     <div class="flex">
         <a href="#">Upload a paste!</a>
