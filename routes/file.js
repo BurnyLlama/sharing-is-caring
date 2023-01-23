@@ -28,7 +28,7 @@ files.post(
 
         const file = File.create(originalname, mimetype)
 
-        const filePath = `./data/storage/${originalname.replace(/[\\/]/g, "")}_${file.id}.${mimetype.replace(/^.+\//g, "")}`
+        const filePath = `./data/storage/${originalname.replace(/[^\w-.]+/g, "_")}_${file.id}.${mimetype.replace(/^.+\//g, "")}`
         writeFile(filePath, buffer)
             .then(() => {
                 File.save(file)
