@@ -35,6 +35,23 @@ header > h1 {
     font-weight: 200;
 }
 
+footer {
+    color: var(--primary);
+    padding: 0.5rem;
+    width: 100%;    
+    text-align: center;
+}
+
 main {
     margin: auto 0;
 }
+
+a {
+    text-decoration: none;
+    color: var(--surface);
+    background-color: var(--primary);
+    border: 3px solid var(--primary);
+    border-radius: 10rem;
+    padding: 0.5rem 1rem;
+}
+
