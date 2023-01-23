@@ -2,7 +2,6 @@ import { Router } from "express"
 import File from "../models/File.js"
 import multer from "multer"
 import { writeFile } from "fs/promises"
-import path from "path"
 
 const files = Router()
 
