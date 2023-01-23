@@ -1,24 +1,16 @@
 {% extends "templates/base.njk" %}
 
 {% block main %}
-    <div>
-        <p>Shorten a URL:</p>
-    </div>
+    <form action="/url/create" method="post">
+        <label for="url">Shorten a URL:</label>
+        <input type="text" name="url" id="url" placeholder="https://example.com">
 
-    <div>
-       <input type="text" name="url" id="url" placeholder="...">
-    </div>
+        <label for="customUrl">Custom URL text:</label>
+        <input type="text" name="customUrl" id="customUrl" placeholder="my-custom-text">
 
-    <div>
-       <p>Write your custom URL here:</p>
-    </div>
-
-    <dir>
-        <input type="text" name="" id="" placeholder="...">
-    </dir>
-
-    <div class="flex">
-        <a href="#">Upload!</a>
-        <a href="/">Go back!</a>
-    </div>
+        <div class="flex">
+            <input type="submit" value="Send!">
+            <a class="btn secondary" href="/">Go back!</a>
+        </div>
+    </form>
 {% endblock %}

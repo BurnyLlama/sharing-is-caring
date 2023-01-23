@@ -99,6 +99,7 @@ textarea::placeholder {
 
 label {
     color: var(--primary);
+    cursor: pointer;
 }
 
 .btn,

@@ -42,7 +42,7 @@ urls.get(
 urls.post(
     "/create",
     (req, res) => {
-        const url = Url.create(req.body.url)
+        const url = Url.create(req.body.url, req.body.customUrl)
         Url.save(url)
         res.send(`<a href="/url/s/${url.id}">Your link here.</a>`)
     }
