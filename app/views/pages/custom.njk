@@ -1,12 +1,12 @@
 {% extends "templates/base.njk" %}
 
 {% block main %}
-    <form action="/url/create" method="post">
+    <form id="create"action="/url/create" method="post">
         <label for="url">Shorten a URL:</label>
         <input type="text" name="url" id="url" placeholder="https://example.com">
 
         <label for="customUrl">Custom URL text:</label>
-        <input type="text" name="customUrl" id="customUrl" placeholder="my-custom-text">
+        <input type="text" name="customUrl" id="customURL" placeholder="my-custom-text">
 
         <div class="flex">
             <input type="submit" value="Send!">

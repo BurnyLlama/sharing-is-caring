@@ -100,6 +100,7 @@ textarea::placeholder {
 label {
     color: var(--primary);
     cursor: pointer;
+    margin: 1.25rem 0 .75rem 0;
 }
 
 .btn,
@@ -119,4 +120,25 @@ input[type="submit"]:hover {
 input[type="submit"].secondary {
     color: var(--primary);
     background-color: transparent;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > input {
+    user-select: none;
+}
+
+.row {
+    flex-direction: row;
+}
+
+#paste {
+    display: flex;
+    flex-direction: column;
+    height: min(60vh, 35rem);
+    width: min(70ch, 80vw);
+    resize: vertical;
 }
