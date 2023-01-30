@@ -45,7 +45,6 @@ files.post(
             return res.status()
 
         const { mimetype, originalname, buffer} = req.file
-        console.log(originalname)
 
         let file = File.create(originalname, mimetype)
         file.id = File.save(file).toString(16)
