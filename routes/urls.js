@@ -6,7 +6,7 @@ const urls = Router()
 urls.get(
     "/s/:id",
     (req, res) => {
-        const url = Url.findById(req.params.id)
+        const url = Url.findById(parseInt(req.params.id, 16))
 
         if (!url)
             return res.status(404).send("Not found.")
@@ -27,18 +27,6 @@ urls.get(
     }
 )
 
-urls.get(
-    "/info/:id",
-    (req, res) => {
-        let url = Url.findById(req.params.id)
-
-        if (!url)
-            return res.status(404).send("Not found.")
-
-        res.json(url)
-    }
-)
-
 urls.post(
     "/create",
     (req, res) => {
@@ -46,8 +34,8 @@ urls.post(
         if (customUrl && Url.findByCustomUrl(customUrl))
             return res.status(402).send("Already taken!")
 
-        const url = Url.create(req.body.url, customUrl ? customUrl.replace(/\W+/g, "-") : null)
-        url.id = Url.save(url)
+        let url = Url.create(req.body.url, customUrl ? customUrl.replace(/\W+/g, "-") : null)
+        url.id = Url.save(url).toString(16)
         if (url.customUrl)
             return res.send(`<a href="/url/c/${url.customUrl}">Your link here. (Right click.)</a>`)
 

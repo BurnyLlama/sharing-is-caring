@@ -8,7 +8,7 @@ const files = Router()
 files.get(
     "/view/:id",
     (req, res) => {
-        const file = File.findById(req.params.id)
+        const file = File.findById(parseInt(req.params.id, 16))
 
         if (!file)
             return res.status(404).send("Not found.")
@@ -20,7 +20,7 @@ files.get(
 files.get(
     "/download/:id",
     (req, res) => {
-        const file = File.findById(req.params.id)
+        const file = File.findById(parseInt(req.params.id, 16))
 
         if (!file) {
             res.status(404).send("Not found.")
@@ -51,7 +51,7 @@ files.post(
         const filePath = `./data/storage/${originalname.replace(/[^\w-.]+/g, "_")}_${file.id}.${mimetype.replace(/^.+\//g, "")}`
         writeFile(filePath, buffer)
             .then(() => {
-                file.id = File.save(file)
+                file.id = File.save(file).toString(16)
                 res.redirect(`/file/view/${file.id}`)
             })
             .catch(err => {
