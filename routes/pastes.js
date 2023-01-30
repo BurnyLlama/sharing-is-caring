@@ -18,8 +18,8 @@ pastes.get(
 pastes.post(
     "/create",
     (req, res) => {
-        const paste = Paste.create(req.body.paste)
-        Paste.save(paste)
+        let paste = Paste.create(req.body.paste)
+        paste.id = Paste.save(paste)
         res.redirect(`/paste/view/${paste.id}`)
     }
 )

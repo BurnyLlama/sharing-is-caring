@@ -1,10 +1,9 @@
-import { randomUUID } from "crypto"
 import { db } from "../lib/database.js"
 
 /**
  * A Url represents a URL shortening.
  * @typedef {object} Url
- * @property {string} id
+ * @property {number} id
  * @property {string} location The location where the URL points to.
  * @property {string} [customUrl] A custom URL instead of using the id.
  */
@@ -17,24 +16,23 @@ const Url = {
      * @returns {Url}
      */
     create: (location, customUrl) => ({
-        // TODO: IDs really shouldn't be UUIDs; they aren't short. Consider hex-numbers.
-        id: randomUUID(),
         location: location ?? "https://example.com",
-        customUrl: customUrl.replace(/\W+/g, "-")
+        customUrl
     }),
 
     /**
      * Inserts a {@link Url} into the database.
      * @param {Url} url
-     * @returns {void}
+     * @returns {number} the id of the inserted url.
      */
     save: url => db
-        .prepare("INSERT INTO urls (id, location, customUrl) VALUES ($id, $location, $customUrl)")
-        .run(url) ?? null,
+        .prepare("INSERT INTO urls (location, customUrl) VALUES ($location, $customUrl)")
+        .run(url)
+        .lastInsertRowid,
 
     /**
      * Finds a {@link Url} by id.
-     * @param {string} id
+     * @param {number} id
      * @returns {Url?}
      */
     findById: id => db

@@ -1,10 +1,9 @@
-import { randomUUID } from "crypto"
 import { db } from "../lib/database.js"
 
 /**
  * A paste is a text stored in the database.
  * @typedef {object} Paste
- * @property {string} id
+ * @property {number} id
  * @property {string} text The text in the paste.
  */
 
@@ -15,21 +14,22 @@ const Paste = {
      * @returns
      */
     create: text => ({
-        id: randomUUID(),
         text: text ?? ""
     }),
 
     /**
      * Saves a {@link Paste} instance to the database.
      * @param {Paste} paste
+     * @returns {number} id of the inserted paste.
      */
     save: paste => db
-        .prepare("INSERT INTO pastes (id, text) VALUES ($id, $text)")
-        .run(paste),
+        .prepare("INSERT INTO pastes (text) VALUES ($text)")
+        .run(paste)
+        .lastInsertRowid,
 
     /**
      * Find a paste via id.
-     * @param {string} id
+     * @param {number} id
      * @returns {Paste?}
      */
     findById: id => db

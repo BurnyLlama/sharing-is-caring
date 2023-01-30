@@ -30,7 +30,7 @@ urls.get(
 urls.get(
     "/info/:id",
     (req, res) => {
-        const url = Url.findById(req.params.id)
+        let url = Url.findById(req.params.id)
 
         if (!url)
             return res.status(404).send("Not found.")
@@ -42,12 +42,12 @@ urls.get(
 urls.post(
     "/create",
     (req, res) => {
-        const customUrl = req.body.customUrl.replace(/\W+/g, "-")
+        const customUrl = req.body.customUrl
         if (customUrl && Url.findByCustomUrl(customUrl))
             return res.status(402).send("Already taken!")
 
-        const url = Url.create(req.body.url, customUrl ?? null)
-        Url.save(url)
+        const url = Url.create(req.body.url, customUrl ? customUrl.replace(/\W+/g, "-") : null)
+        url.id = Url.save(url)
         if (url.customUrl)
             return res.send(`<a href="/url/c/${url.customUrl}">Your link here. (Right click.)</a>`)
 

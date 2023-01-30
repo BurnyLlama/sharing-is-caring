@@ -1,9 +1,8 @@
 import { db } from "../lib/database.js"
-import { randomUUID } from "crypto"
 
 /**
  * @typedef {object} File
- * @property {string} id
+ * @property {number} id
  * @property {string} name The file name.
  * @property {string} mimetype The file type.
  * @property {string} c_time Creation time. (Saved as ISO-string.)
@@ -17,7 +16,6 @@ const File = {
      * @returns {File}
      */
     create: (name, mimetype) => ({
-        id: randomUUID(),
         name,
         mimetype,
         c_time: new Date(Date.now()).toISOString() // Must be a string to save in sqlite.
@@ -26,15 +24,16 @@ const File = {
     /**
      * Inserts a {@link File} into the database.
      * @param {Url} url
-     * @returns {void}
+     * @returns {number} id of the inserted file.
      */
     save: file => db
-        .prepare("INSERT INTO files (id, name, mimetype, c_time) VALUES ($id, $name, $mimetype, $c_time)")
-        .run(file) ?? null,
+        .prepare("INSERT INTO files (name, mimetype, c_time) VALUES ($name, $mimetype, $c_time)")
+        .run(file)
+        .lastInsertRowid,
 
     /**
      * Find a file via an ID.
-     * @param {string} id The id of the file to find.
+     * @param {number} id The id of the file to find.
      * @returns {File?}
      */
     findById: id => db
