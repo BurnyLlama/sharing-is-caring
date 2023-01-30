@@ -44,6 +44,7 @@ footer {
 
 main {
     margin: auto 0;
+    padding: 5vmin 0;
 }
 
 .flex {
@@ -119,4 +120,13 @@ input[type="submit"]:hover {
 input[type="submit"].secondary {
     color: var(--primary);
     background-color: transparent;
+}
+
+img {
+    width: min(60ch, 80vw);
+}
+
+.filename {
+    text-align: center;
+    margin-bottom: 1rem;
 }
