@@ -26,7 +26,7 @@ files.get(
             res.status(404).send("Not found.")
         }
 
-        const filePath = `./data/storage/${file.name.replace(/[^\w-.]+/g, "_")}_${file.id}.${file.mimetype.replace(/^.+\//g, "")}`
+        const filePath = `./data/storage/${file.name.replace(/[^\w-.]+/g, "_")}_${req.params.id}.${file.mimetype.replace(/^.+\//g, "")}`
         res.sendFile(
             filePath,
             {
