@@ -47,11 +47,11 @@ files.post(
         const { mimetype, originalname, buffer} = req.file
 
         let file = File.create(originalname, mimetype)
+        file.id = File.save(file).toString(16)
 
         const filePath = `./data/storage/${originalname.replace(/[^\w-.]+/g, "_")}_${file.id}.${mimetype.replace(/^.+\//g, "")}`
         writeFile(filePath, buffer)
             .then(() => {
-                file.id = File.save(file).toString(16)
                 res.redirect(`/file/view/${file.id}`)
             })
             .catch(err => {

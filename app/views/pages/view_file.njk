@@ -1,11 +1,16 @@
 {% extends "templates/base.njk" %}
 
 {% block main %}
-    <h1>{{ file.name }}</h1>
+    <h1 class="filename">{{ file.name }}</h1>
 
+
+    {% if file.mimetype.startsWith("image") %}
+        <img src="/file/download/{{ file.id }}">
+    {% endif %}
 
     <div class="flex">
         <a class="btn" href="/file/download/{{ file.id }}" download="{{ file.name }}">Download file!</a>
-        <a class="btn secondary" href="/file">Upload a file!</a>
+        <a class="btn" href="/paste">Upload a file!</a>
+        <a class="btn secondary" href="/">Go back!</a>
     </div>
 {% endblock %}

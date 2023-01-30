@@ -44,6 +44,7 @@ footer {
 
 main {
     margin: auto 0;
+    padding: 5vmin 0;
 }
 
 .flex {
@@ -141,4 +142,13 @@ form > input {
     height: min(60vh, 35rem);
     width: min(70ch, 80vw);
     resize: vertical;
+}
+
+img {
+    width: min(60ch, 80vw);
+}
+
+.filename {
+    text-align: center;
+    margin-bottom: 1rem;
 }
