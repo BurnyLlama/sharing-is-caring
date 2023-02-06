@@ -1,5 +1,9 @@
 {% extends "templates/base.njk" %}
 
+{% block head %}
+    <script src="/static/clipboard.js" defer></script>
+{% endblock %}
+
 {% block main %}
     <form action="#">
         <label for="url">Here's your shortened URL:</label>
@@ -11,7 +15,7 @@
     </form>
 
     <div class="flex">
-        <a class="btn" href="/">Shorten a link!</a>
-        <a class="btn secondary" href="/">Go back!</a>
+        <button class="btn" id="copyToClipboard">Copy the link!</button>
+        <a class="btn secondary" href="/">Shorten another link!</a>
     </div>
 {% endblock %}
