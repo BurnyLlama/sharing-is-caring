@@ -14,6 +14,17 @@
     --placeholder: #667766;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --surface: #102010;
+        --raised: #223322;
+        --primary: #73B493;
+        --accent: #BBCCBB;
+        --text: #DDEEDD;
+        --placeholder: #667766;
+    }
+}
+
 :root, html, body {
     min-height: 100vh;
     display: flex;
