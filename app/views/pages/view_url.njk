@@ -10,7 +10,7 @@
         {% if url.customUrl %}
             <input type="text" readonly id="url" name="url" value="{{ siteUrl }}/url/c/{{url.customUrl}}">
         {% else %}
-            <input type="text" readonly id="url" name="url" value="{{ siteUrl }}/url/s/{{url.id}}">
+            <input type="text" readonly id="url" name="url" value="{{ siteUrl }}/url/s/{{ url.id.toString(16) }}">
         {% endif %}
     </form>
 

@@ -11,7 +11,7 @@ urls.get(
         if (!url)
             return res.status(404).send("Not found.")
 
-        res.redirect(url.location)
+        res.redirect(url.location.match(/^https?:\/\//) ? url.location : `https://${url.location}`)
     }
 )
 
