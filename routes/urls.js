@@ -16,6 +16,20 @@ urls.get(
 )
 
 urls.get(
+    "/info/:id",
+    (req, res) => {
+        const url = Url.findById(parseInt(req.params.id, 16))
+
+        if (!url)
+            return res.status(404).send("Not found.")
+
+        const subdomains = req.subdomains.join(".")
+        const siteUrl = `${req.protocol}://${subdomains ? subdomains + "." : ""}${req.hostname === "localhost" ? "localhost:12345" : req.hostname}`
+        res.render("pages/view_url.njk", { siteUrl, url })
+    }
+)
+
+urls.get(
     "/c/:customUrl",
     (req, res) => {
         const url = Url.findByCustomUrl(req.params.customUrl)
@@ -36,10 +50,8 @@ urls.post(
 
         let url = Url.create(req.body.url, customUrl ? customUrl.replace(/\W+/g, "-") : null)
         url.id = Url.save(url).toString(16)
-        if (url.customUrl)
-            return res.send(`<a href="/url/c/${url.customUrl}">Your link here. (Right click.)</a>`)
 
-        res.send(`<a href="/url/s/${url.id}">Your link here. (Right click.)</a>`)
+        res.redirect(`/url/info/${url.id}`)
     }
 )
 
