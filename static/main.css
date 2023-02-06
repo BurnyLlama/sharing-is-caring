@@ -11,6 +11,7 @@
     --primary: #458565;
     --accent: #223322;
     --text: #112211;
+    --placeholder: #667766;
 }
 
 :root, html, body {
@@ -95,7 +96,8 @@ textarea {
 
 input::placeholder,
 textarea::placeholder {
-    color: var(--accent);
+    opacity: 1;
+    color: var(--placeholder);
 }
 
 label {
