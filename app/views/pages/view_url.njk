@@ -8,9 +8,9 @@
     <form action="#">
         <label for="url">Here's your shortened URL:</label>
         {% if url.customUrl %}
-            <input type="text" id="url" name="url" value="{{ siteUrl }}/url/c/{{url.customUrl}}">
+            <input type="text" readonly id="url" name="url" value="{{ siteUrl }}/url/c/{{url.customUrl}}">
         {% else %}
-            <input type="text" id="url" name="url" value="{{ siteUrl }}/url/s/{{url.id}}">
+            <input type="text" readonly id="url" name="url" value="{{ siteUrl }}/url/s/{{url.id}}">
         {% endif %}
     </form>
 
